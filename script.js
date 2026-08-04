@@ -7,7 +7,7 @@ const study = lab.util.fromObject({
     {
       "type": "lab.plugins.Metadata",
       "path": undefined
-    }
+    },
   ],
   "metadata": {
     "title": "",
@@ -1148,9 +1148,34 @@ this.state.condition = (id % 3) +1;
         "": ""
       },
       "parameters": {},
-      "messageHandlers": {},
+      "messageHandlers": {
+        "before:prepare": function anonymous() {
+// CSVファイル名をランダムIDにする
+const participantID = this.random.uuid4();
+const filename = participantID + "_data.csv";
+
+// lab.jsのデータをCSV形式で書き出す
+const data =
+  study.internals.controller.datastore.exportCsv();
+
+// DataPipeへ送信する
+fetch("https://pipe.jspsych.org/api/data/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "*/*",
+  },
+  body: JSON.stringify({
+    experimentID: "9THDZIOT6RjP",
+    filename: filename,
+    data: data,
+  }),
+});
+}
+      },
       "title": "thanks",
-      "timeout": "1000"
+      "timeout": "5000",
+      "tardy": true
     }
   ]
 })
