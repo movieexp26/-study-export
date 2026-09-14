@@ -24,6 +24,37 @@ const study = lab.util.fromObject({
         {
           "type": "text",
           "title": "ご参加ありがとうございます。",
+          "content": "本研究では、ご自身の映画鑑賞経験に関する質問に回答していただいた後、１本の予告編をご覧いただき、予告編を視聴して感じたことに関する質問に回答していただきます。正解などはありませんので，感じたままにご回答ください。"
+        },
+        {
+          "required": true,
+          "type": "text",
+          "title": "準備ができた方は「次へ」を押して，開始してください。"
+        },
+        {
+          "required": true,
+          "type": "html",
+          "content": "\u003Cdiv class = 'content-horizontal-center'\u003E\u003Cbutton id = \"nextBtn\"\u003E次へ\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E",
+          "name": ""
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "Continue →",
+      "submitButtonPosition": "hidden",
+      "files": {},
+      "responses": {
+        "": ""
+      },
+      "parameters": {},
+      "messageHandlers": {},
+      "title": "Instruction"
+    },
+    {
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "type": "text",
+          "title": "ご参加ありがとうございます。",
           "content": "本実験・調査の実施者は慶應義塾大学の李光鎬ゼミの３年生です。実施責任者は慶應義塾大学の李光鎬です。本実験・調査への参加はあなたの任意によるものです。"
         },
         {
@@ -31,6 +62,12 @@ const study = lab.util.fromObject({
           "type": "text",
           "title": "本実験・調査の手続き",
           "content": "本実験・調査では映画の予告編に関するアンケートにお答えいただきます。この実験・調査の所要時間は10〜20分程度です。"
+        },
+        {
+          "required": true,
+          "type": "text",
+          "title": "謝礼について",
+          "content": "本実験に参加していただくにあたり、謝礼代100円をお支払いします。\n実験終了後、Amazon e-Giftを送付するためのメールアドレスをご記入いただきます。"
         },
         {
           "required": true,
@@ -47,7 +84,7 @@ const study = lab.util.fromObject({
         {
           "required": true,
           "type": "text",
-          "title": "匿名性の確保",
+          "title": "個人情報の取り扱い",
           "content": "本実験・調査によって得られた情報は法律による開示請求を除き，匿名性が維持されます。匿名性は実験参加者番号の付与，統計的解析によって保たれます。"
         },
         {
@@ -107,41 +144,6 @@ this.state.condition = (id % 3) +1;
       "title": "informedConsent"
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "left": 0,
-          "top": -25,
-          "angle": 0,
-          "width": 415.34,
-          "height": 48.82,
-          "stroke": null,
-          "strokeWidth": 1,
-          "fill": "black",
-          "text": "あなたのIDは${this.state.participantID}です。\n${this.state.condition}",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-          "fontSize": "20",
-          "fontFamily": "sans-serif",
-          "lineHeight": 1.16,
-          "textAlign": "center"
-        }
-      ],
-      "viewport": [
-        800,
-        600
-      ],
-      "files": {},
-      "responses": {
-        "": ""
-      },
-      "parameters": {},
-      "messageHandlers": {},
-      "title": "Screen",
-      "timeout": "1000"
-    },
-    {
       "type": "lab.html.Page",
       "items": [
         {
@@ -158,14 +160,22 @@ this.state.condition = (id % 3) +1;
         },
         {
           "required": true,
-          "type": "input",
+          "type": "radio",
           "label": "性別",
-          "attributes": {
-            "type": "text",
-            "min": "18",
-            "max": "99"
-          },
-          "help": "性別を入力してください",
+          "options": [
+            {
+              "label": "男性",
+              "coding": "men"
+            },
+            {
+              "label": "女性",
+              "coding": "women"
+            },
+            {
+              "label": "回答しない",
+              "coding": "no ansewer"
+            }
+          ],
           "name": "sex"
         },
         {
@@ -191,43 +201,12 @@ this.state.condition = (id % 3) +1;
       "items": [
         {
           "type": "text",
-          "title": "ご参加ありがとうございます。",
-          "content": "本研究では、ご自身の映画鑑賞経験に関する質問に回答していただいた後、１本の予告編をご覧いただき、予告編を視聴して感じたことに関する質問に回答していただきます。正解などはありませんので，感じたままにご回答ください。"
-        },
-        {
-          "required": true,
-          "type": "text",
-          "title": "準備ができた方は「次へ」を押して，開始してください。"
-        },
-        {
-          "required": true,
-          "type": "html",
-          "content": "\u003Cdiv class = 'content-horizontal-center'\u003E\u003Cbutton id = \"nextBtn\"\u003E次へ\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E",
-          "name": ""
-        }
-      ],
-      "scrollTop": true,
-      "submitButtonText": "Continue →",
-      "submitButtonPosition": "hidden",
-      "files": {},
-      "responses": {
-        "": ""
-      },
-      "parameters": {},
-      "messageHandlers": {},
-      "title": "Instruction"
-    },
-    {
-      "type": "lab.html.Page",
-      "items": [
-        {
-          "type": "text",
           "content": "ご自身の映画鑑賞経験に関して、以下の質問文を読んでいただき，あたなにもっとも当てはまると思う選択肢を選んで回答してください。回答は選択肢のボタンをチェックすることで行ってください。"
         },
         {
           "required": true,
           "type": "radio",
-          "label": "１．映画を見る頻度について",
+          "label": "１．映画館で映画を見る頻度について",
           "options": [
             {
               "coding": "1",
@@ -248,6 +227,10 @@ this.state.condition = (id % 3) +1;
             {
               "coding": "5",
               "label": "１週間に１本"
+            },
+            {
+              "label": "全く見ない",
+              "coding": "0"
             }
           ],
           "name": "movie_frequency"
@@ -372,42 +355,6 @@ this.state.condition = (id % 3) +1;
       "skip": "${this.state.condition != 3}",
       "content": [
         {
-          "type": "lab.canvas.Screen",
-          "content": [
-            {
-              "type": "i-text",
-              "left": 0,
-              "top": 0,
-              "angle": 0,
-              "width": 224,
-              "height": 36.16,
-              "stroke": null,
-              "strokeWidth": 1,
-              "fill": "black",
-              "text": "あなたは３です",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-              "fontSize": 32,
-              "fontFamily": "sans-serif",
-              "lineHeight": 1.16,
-              "textAlign": "center"
-            }
-          ],
-          "viewport": [
-            800,
-            600
-          ],
-          "files": {},
-          "responses": {
-            "": ""
-          },
-          "parameters": {},
-          "messageHandlers": {},
-          "title": "movie3",
-          "timeout": "2000",
-          "skip": "${this.state.condition != 3}"
-        },
-        {
           "type": "lab.html.Page",
           "items": [
             {
@@ -417,12 +364,12 @@ this.state.condition = (id % 3) +1;
             {
               "required": true,
               "type": "html",
-              "content": "\u003Ciframe src=\"https:\u002F\u002Fdrive.google.com\u002Ffile\u002Fd\u002F1-xajNyr1od9nyiB2N5v_PW8sz9xSvjRN\u002Fpreview?autoplay=1&mute=1 \" width=\"640\" height=\"480\"\u003E\u003C\u002Fiframe\u003E",
+              "content": "\u003Ciframe src=\"https:\u002F\u002Fdrive.google.com\u002Ffile\u002Fd\u002F1-xajNyr1od9nyiB2N5v_PW8sz9xSvjRN\u002Fpreview\" width=\"640\" height=\"480\"\u003E\u003C\u002Fiframe\u003E",
               "name": ""
             }
           ],
           "scrollTop": true,
-          "submitButtonText": "Continue →",
+          "submitButtonText": "次へ →",
           "submitButtonPosition": "right",
           "files": {},
           "responses": {
@@ -446,42 +393,6 @@ this.state.condition = (id % 3) +1;
       "skip": "${this.state.condition != 2}",
       "content": [
         {
-          "type": "lab.canvas.Screen",
-          "content": [
-            {
-              "type": "i-text",
-              "left": 0,
-              "top": 0,
-              "angle": 0,
-              "width": 224,
-              "height": 36.16,
-              "stroke": null,
-              "strokeWidth": 1,
-              "fill": "black",
-              "text": "あなたは２です",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-              "fontSize": 32,
-              "fontFamily": "sans-serif",
-              "lineHeight": 1.16,
-              "textAlign": "center"
-            }
-          ],
-          "viewport": [
-            800,
-            600
-          ],
-          "files": {},
-          "responses": {
-            "": ""
-          },
-          "parameters": {},
-          "messageHandlers": {},
-          "title": "movie2",
-          "timeout": "2000",
-          "skip": "${this.state.condition != 2}"
-        },
-        {
           "type": "lab.html.Page",
           "items": [
             {
@@ -491,12 +402,12 @@ this.state.condition = (id % 3) +1;
             {
               "required": true,
               "type": "html",
-              "content": "\u003Ciframe src=\"https:\u002F\u002Fdrive.google.com\u002Ffile\u002Fd\u002F1sYLzUTwAbIl4swVxihMk4WE9_GEGzcn9\u002Fpreview?autoplay=1&mute=1 \" width=\"640\" height=\"480\"\u003E\u003C\u002Fiframe\u003E",
+              "content": "\u003Ciframe src=\"https:\u002F\u002Fdrive.google.com\u002Ffile\u002Fd\u002F1sYLzUTwAbIl4swVxihMk4WE9_GEGzcn9\u002Fpreview\" width=\"640\" height=\"480\"\u003E\u003C\u002Fiframe\u003E",
               "name": ""
             }
           ],
           "scrollTop": true,
-          "submitButtonText": "Continue →",
+          "submitButtonText": "次へ →",
           "submitButtonPosition": "right",
           "files": {},
           "responses": {
@@ -520,42 +431,6 @@ this.state.condition = (id % 3) +1;
       "skip": "${this.state.condition != 1}",
       "content": [
         {
-          "type": "lab.canvas.Screen",
-          "content": [
-            {
-              "type": "i-text",
-              "left": 0,
-              "top": 0,
-              "angle": 0,
-              "width": 224,
-              "height": 36.16,
-              "stroke": null,
-              "strokeWidth": 1,
-              "fill": "black",
-              "text": "あなたは１です",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-              "fontSize": 32,
-              "fontFamily": "sans-serif",
-              "lineHeight": 1.16,
-              "textAlign": "center"
-            }
-          ],
-          "viewport": [
-            800,
-            600
-          ],
-          "files": {},
-          "responses": {
-            "": ""
-          },
-          "parameters": {},
-          "messageHandlers": {},
-          "title": "movie1",
-          "timeout": "2000",
-          "skip": "${this.state.condition != 1}"
-        },
-        {
           "type": "lab.html.Page",
           "items": [
             {
@@ -565,12 +440,12 @@ this.state.condition = (id % 3) +1;
             {
               "required": true,
               "type": "html",
-              "content": "\u003Ciframe src=\"https:\u002F\u002Fdrive.google.com\u002Ffile\u002Fd\u002F1P0vJShfdpZbz6nemJzVLD3lo4znkVPic\u002Fpreview?autoplay=1&mute=1\" width=\"640\" height=\"480\"\u003E\u003C\u002Fiframe\u003E",
+              "content": "\u003Ciframe src=\"https:\u002F\u002Fdrive.google.com\u002Ffile\u002Fd\u002F1P0vJShfdpZbz6nemJzVLD3lo4znkVPic\u002Fpreview\" width=\"640\" height=\"480\"\u003E\u003C\u002Fiframe\u003E",
               "name": ""
             }
           ],
           "scrollTop": true,
-          "submitButtonText": "Continue →",
+          "submitButtonText": "次へ →",
           "submitButtonPosition": "right",
           "files": {},
           "responses": {
@@ -1093,7 +968,7 @@ this.state.condition = (id % 3) +1;
         {
           "required": true,
           "type": "textarea",
-          "help": "予告編の、どういった部分が映画を見たいと思う理由になりましたか？あなたの考えを自由に書いてください。 ない場合は「特になし」と記入してください。",
+          "help": "今視聴していただいた予告編の、どういった部分が映画を見たいと思う理由になりましたか？あなたの考えを自由に書いてください。 ない場合は「特になし」と記入してください。",
           "label": "予告編の魅力についての質問",
           "name": ""
         }
@@ -1136,6 +1011,63 @@ this.state.condition = (id % 3) +1;
       "items": [
         {
           "type": "text",
+          "title": "実験終了後の説明",
+          "content": "本実験にご参加いただき、ありがとうございました。  \n本実験では、映画予告編において作品名が表示されるタイミングの違いが、視聴者の感情や予告編への評価、映画本編の視聴意欲などにどのような影響を与えるかを検討しています。  \nそのため、参加者の方には、作品名「千と千尋の神隠し」が表示されるタイミングが異なる予告編のいずれか1つをご覧いただきました。  \n実験開始前にこの研究目的を詳しくお伝えすると、予告編を見る際の意識や回答に影響を与える可能性があるため、事前の説明では研究目的の詳細をお伝えしていませんでした。  \n以上の説明をご確認いただいたうえで、本実験で得られた回答データを研究に使用することに同意いただける場合は、下の「同意する」を選択してください。"
+        },
+        {
+          "required": true,
+          "type": "radio",
+          "options": [
+            {
+              "label": "上記の説明を読み、理解した上で、回答データを研究に使用することに同意します。",
+              "coding": "yes"
+            }
+          ],
+          "label": "以上の説明をご確認いただいたうえで、本実験で得られた回答データを研究に使用することに同意いただけますか。同意いただける場合は、下の項目を選択して「次へ」を押してください。同意いただけない場合は、この画面でウィンドウを閉じて実験を終了してください。",
+          "name": "debrief_consent"
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "次へ→",
+      "submitButtonPosition": "right",
+      "files": {},
+      "responses": {
+        "": ""
+      },
+      "parameters": {},
+      "messageHandlers": {},
+      "title": "Debriefing"
+    },
+    {
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "required": true,
+          "type": "input",
+          "label": "実験にご協力いただき誠にありがとうございました。以下に謝礼代を送付するためのEメールアドレスをご記入ください。",
+          "attributes": {
+            "type": "email"
+          },
+          "help": "本実験において提供された電子メールアドレスは、謝礼代を送付する際にのみ使用します。提供されたメールアドレスは、第三者への提供やその他の目的のために利用することはありません。",
+          "name": "email_address"
+        }
+      ],
+      "scrollTop": true,
+      "submitButtonText": "次へ →",
+      "submitButtonPosition": "right",
+      "files": {},
+      "responses": {
+        "": ""
+      },
+      "parameters": {},
+      "messageHandlers": {},
+      "title": "mailaddress"
+    },
+    {
+      "type": "lab.html.Page",
+      "items": [
+        {
+          "type": "text",
           "title": "\u003Cspan style = \"color:tomato\"\u003Eこれで本実験・調査は終了です！\u003C\u002Fspan\u003E",
           "content": "\u003Cspan style = \"color:tomato\"\u003Eご協力くださり，誠にありがとうございました。ウィンドウを閉じて実験を終了してください。\u003C\u002Fspan\u003E"
         }
@@ -1150,15 +1082,10 @@ this.state.condition = (id % 3) +1;
       "parameters": {},
       "messageHandlers": {
         "before:prepare": function anonymous() {
-// CSVファイル名をランダムIDにする
-const participantID = this.random.uuid4();
-const filename = participantID + "_data.csv";
+const participantID = this.random.uuid4()
+const filename = participantID + "_data.csv"
+const data = study.internals.controller.datastore.exportCsv();
 
-// lab.jsのデータをCSV形式で書き出す
-const data =
-  study.internals.controller.datastore.exportCsv();
-
-// DataPipeへ送信する
 fetch("https://pipe.jspsych.org/api/data/", {
   method: "POST",
   headers: {
@@ -1166,11 +1093,12 @@ fetch("https://pipe.jspsych.org/api/data/", {
     Accept: "*/*",
   },
   body: JSON.stringify({
-    experimentID: "9THDZIOT6RjP",
+    experimentID: "NSNoi3KQxxcb",
     filename: filename,
     data: data,
   }),
 });
+
 }
       },
       "title": "thanks",
