@@ -39,8 +39,8 @@ const study = lab.util.fromObject({
         }
       ],
       "scrollTop": true,
-      "submitButtonText": "Continue →",
-      "submitButtonPosition": "hidden",
+      "submitButtonText": "次へ →",
+      "submitButtonPosition": "right",
       "files": {},
       "responses": {
         "": ""
@@ -125,8 +125,8 @@ const study = lab.util.fromObject({
         }
       ],
       "scrollTop": true,
-      "submitButtonText": "Continue →",
-      "submitButtonPosition": "hidden",
+      "submitButtonText": "次へ→",
+      "submitButtonPosition": "right",
       "files": {},
       "responses": {
         "": ""
@@ -186,8 +186,8 @@ this.state.condition = (id % 3) +1;
         }
       ],
       "scrollTop": true,
-      "submitButtonText": "Continue →",
-      "submitButtonPosition": "hidden",
+      "submitButtonText": "次へ→",
+      "submitButtonPosition": "right",
       "files": {},
       "responses": {
         "": ""
@@ -351,7 +351,7 @@ this.state.condition = (id % 3) +1;
       },
       "parameters": {},
       "messageHandlers": {},
-      "title": "Sequence",
+      "title": "Sequence1",
       "skip": "${this.state.condition != 3}",
       "content": [
         {
@@ -377,7 +377,7 @@ this.state.condition = (id % 3) +1;
           },
           "parameters": {},
           "messageHandlers": {},
-          "title": "Page"
+          "title": "Page1"
         }
       ]
     },
@@ -389,7 +389,7 @@ this.state.condition = (id % 3) +1;
       },
       "parameters": {},
       "messageHandlers": {},
-      "title": "Sequence",
+      "title": "Sequence2",
       "skip": "${this.state.condition != 2}",
       "content": [
         {
@@ -415,7 +415,7 @@ this.state.condition = (id % 3) +1;
           },
           "parameters": {},
           "messageHandlers": {},
-          "title": "Page"
+          "title": "Page2"
         }
       ]
     },
@@ -427,7 +427,7 @@ this.state.condition = (id % 3) +1;
       },
       "parameters": {},
       "messageHandlers": {},
-      "title": "Sequence",
+      "title": "Sequence3",
       "skip": "${this.state.condition != 1}",
       "content": [
         {
@@ -453,7 +453,7 @@ this.state.condition = (id % 3) +1;
           },
           "parameters": {},
           "messageHandlers": {},
-          "title": "Page"
+          "title": "Page3"
         }
       ]
     },
@@ -970,7 +970,7 @@ this.state.condition = (id % 3) +1;
           "type": "textarea",
           "help": "今視聴していただいた予告編の、どういった部分が映画を見たいと思う理由になりましたか？あなたの考えを自由に書いてください。 ない場合は「特になし」と記入してください。",
           "label": "予告編の魅力についての質問",
-          "name": ""
+          "name": "free_description"
         }
       ],
       "scrollTop": true,
@@ -992,11 +992,11 @@ this.state.condition = (id % 3) +1;
           "type": "textarea",
           "label": "調査・実験時の問題",
           "help": "調査・実験の際に問題があった方は内容をご入力ください。問題がなかった方は空欄のままでけっこうです。",
-          "name": ""
+          "name": "error_report"
         }
       ],
       "scrollTop": true,
-      "submitButtonText": "Continue →",
+      "submitButtonText": "次へ →",
       "submitButtonPosition": "right",
       "files": {},
       "responses": {
